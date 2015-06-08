@@ -3,16 +3,16 @@ var assert = require('assert');
 var insert = require('./insert');
 
 insert([{
-	hello:'world'
+  hello:'world'
 }], function(db, done) {
-	db.collection('b').save({hello: "world"})
-		.then(function(b) {
-			return db.getCollectionNames();
-		})
-		.then(function(colNames) {
-			assert.notEqual(colNames.indexOf('a'), -1);
-			assert.notEqual(colNames.indexOf('b'), -1);
-			done();
-		})
-		.done();
+  db.collection('b').save({hello: "world"})
+    .then(function(b) {
+      return db.getCollectionNames();
+    })
+    .then(function(colNames) {
+      assert.notEqual(colNames.indexOf('a'), -1);
+      assert.notEqual(colNames.indexOf('b'), -1);
+      done();
+    })
+    .done();
 });

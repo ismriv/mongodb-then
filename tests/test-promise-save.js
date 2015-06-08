@@ -3,19 +3,18 @@ var mongojs = require('../index');
 var db = mongojs('test', ['a','b']);
 
 db.a.save({hello: "world"})
-	.then(function(doc) {
-		assert.equal(doc.hello, "world");
-		assert.ok(doc._id);
+  .then(function(result) {
+    assert.equal(result.ops[0].hello, "world");
+    assert.ok(result.ops[0]._id);
 
-		doc.hello = "verden";
-		return db.a.save(doc);
-	})
-	.then(function(doc) {
-		assert.ok(doc._id);
-		assert.equal(doc.hello, "verden");
+    result.ops[0].hello = "verden";
+    return db.a.save(result.ops[0]);
+  })
+  .then(function(result) {
+    assert.equal(result.result.nModified, 1);
 
-		return db.a.remove();
-	})
-	.done(function () {
-		db.close();
-	});
+    return db.a.remove();
+  })
+  .done(function () {
+    db.close();
+  });

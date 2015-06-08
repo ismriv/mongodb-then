@@ -1,17 +1,18 @@
 {
-  "name": "promised-mongo",
-  "description": "Easy to use module that implements the mongo api and supports promises",
+  "name": "mongodb-then",
+  "description": "A promise-based wrapper for mongodb.",
+  "version": "0.1.0",
   "keywords": [
     "mongo",
-    "db",
     "mongodb",
     "promise",
-    "q"
+    "then",
+    "bluebird"
   ],
-  "version": "0.11.6",
-  "repository": "git://github.com/gordonmleigh/promised-mongo.git",
-  "author": "Gordon Mackenzie-Leigh <gordon@stugo.co.uk>",
+  "repository": "git://github.com/ismriv/mongodb-then.git",
+  "author": "Ismael Rivera <me@ismaelrivera.es>",
   "contributors": [
+    "Ismael Rivera <me@ismaelrivera.es>",
     "Gordon Mackenzie-Leigh <gordon@stugo.co.uk>",
     "Mathias Buus Madsen <mathiasbuus@gmail.com>",
     "Ian Jorgensen",
@@ -28,9 +29,9 @@
     "Kevin McTigue"
   ],
   "dependencies": {
-    "readable-stream": "~1.1.8",
-    "mongodb": "1.4.0",
-    "q": "~0.9.7"
+    "bluebird": "2.9.x",
+    "mongodb": "2.0.33",
+    "readable-stream": "1.0.x"
   },
   "scripts": {
     "test": "node ./tests"

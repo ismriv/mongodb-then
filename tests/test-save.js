@@ -2,16 +2,15 @@ var assert = require('assert');
 var mongojs = require('../index');
 var db = mongojs('test', ['a','b']);
 
-db.a.save({hello: "world"}, function(err, doc) {
-	assert.equal(doc.hello, "world");
-	assert.ok(doc._id);
+db.a.save({hello: "world"}, function(err, result) {
+  assert.equal(result.ops[0].hello, "world");
+  assert.ok(result.ops[0]._id);
 
-	doc.hello = "verden";
-	db.a.save(doc, function(err, doc) {
-		assert.ok(doc._id);
-		assert.equal(doc.hello, "verden")
-		db.a.remove(function() {
-			db.close();
-		});
-	});
+  result.ops[0].hello = "verden";
+  db.a.save(result.ops[0], function(err, result) {
+    assert.equal(result.result.nModified, 1);
+    db.a.remove(function() {
+      db.close();
+    });
+  });
 });
