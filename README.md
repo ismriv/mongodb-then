@@ -18,7 +18,7 @@ var db = mongodb('example.com:27017/mydb', [
   'mycollection'
 ]);
 
-db.mycollection.insert({hello: 'world'}).then(function () {
+db.mycollection.insertOne({hello: 'world'}).then(function () {
   return db.mycollection.find({}).toArray();
 }).then(function (docs) {
   // docs = [{ hello: 'world', _id: 5574aef0faecfb556ed376a8 }]

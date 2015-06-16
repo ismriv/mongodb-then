@@ -1,7 +1,7 @@
 {
   "name": "mongodb-then",
   "description": "A promise-based wrapper for mongodb.",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "keywords": [
     "mongo",
     "mongodb",

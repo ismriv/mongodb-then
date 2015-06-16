@@ -74,6 +74,10 @@ Cursor.prototype.next = function () {
   return this._apply('nextObject', arguments);
 };
 
+Cursor.prototype.close = function () {
+  return this._apply('close', arguments);
+};
+
 Cursor.prototype.forEach = function (fn) {
   if (fn.length === 1) {
     // the fn is promise type (function (doc) {...})
