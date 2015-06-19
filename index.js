@@ -181,7 +181,10 @@ Cursor.prototype._read = function () { // 0.10 stream support (0.8 compat using 
 
 Cursor.prototype._config = function (fn, args) {
   var cargs = splitArgs(args);
-  var p = this._apply(fn, cargs.args);
+
+  this._get().then(function (cursor) {
+    cursor[fn].apply(cursor, cargs.args);
+  });
 
   // if callback is specified, toArray() will be automatically called
   // if using promises, toArray() will have to be called manually
